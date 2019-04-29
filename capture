@@ -1,0 +1,5 @@
+ #!/bin/bash
+
+echo "starting capture for 20 seconds"
+ sudo tshark -i eth0 -f "udp" -a duration:20 > capture_output
+echo "done"
