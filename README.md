@@ -1,3 +1,4 @@
 # WoL-PythonProxy
 Python script used for forwarding magic packets from WAN to LAN.
-Ignore "security" lines
+
+Includes some level of security.
