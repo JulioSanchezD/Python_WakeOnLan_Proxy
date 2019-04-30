@@ -15,9 +15,9 @@ sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
 while True:
 	data, addr = sock.recvfrom(1024) 
 	if data:
-		print(data)
 		if security.verify(data):
 			sock.sendto(data, (BROADCAST_ADDRESS, UDP_PORT))
 		else:
 			os.system("sudo ufw delete allow 9/udp")
+			os.system("sudo ufw --force enable")
 			break
