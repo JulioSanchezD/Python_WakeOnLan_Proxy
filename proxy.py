@@ -1,4 +1,4 @@
-import socket, security, json
+import socket, security, json, os
 
 with open('config.json') as config_file:
 	config = json.load(config_file)
@@ -15,7 +15,9 @@ sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
 while True:
 	data, addr = sock.recvfrom(1024) 
 	if data:
+		print(data)
 		if security.verify(data):
 			sock.sendto(data, (BROADCAST_ADDRESS, UDP_PORT))
 		else:
-			print("Wrong packet")
+			os.system("sudo ufw delete allow 9/udp")
+			break
